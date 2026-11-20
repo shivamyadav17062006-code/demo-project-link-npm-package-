@@ -98,6 +98,21 @@ Things worth clicking:
 - **Activity logs** — the exact npm command behind every operation
 - **Project doctor** — environment checks
 
+## Run both side by side
+
+The sample app and the dashboard are separate processes that manage the
+same folder:
+
+| Terminal | Command | Runs at |
+| --- | --- | --- |
+| 1 (this folder) | `npm start` | <http://localhost:3000> |
+| 2 (this folder) | `npm-buddy dashboard` | <http://127.0.0.1:4174> |
+
+Keep the dashboard open and change something with the CLI in a third
+terminal (`npm-buddy install zod`). The dashboard reflects the new
+dependency on its next refresh, which makes the install/remove workflow
+easy to demonstrate.
+
 ## Troubleshooting
 
 | Symptom | Fix |

@@ -82,19 +82,21 @@ npm-buddy explain node_modules
 
 ## Demo project
 
-`demo/` is a sample Express app with a health-check page, a production
-dependency (axios) and a dev dependency (nodemon), made for trying npm-pal
-safely.
+The repository ships two things that run side by side against the same
+sample project:
 
-```bash
-cd demo
-npm install
-npm start              # http://localhost:3000
-npm-buddy dashboard    # browse the same project in the browser
-```
+| Piece | Start it | Opens at |
+| --- | --- | --- |
+| Sample app (`demo/`) | `cd demo && npm install && npm start` | <http://localhost:3000> |
+| Visual dashboard | `npm-buddy dashboard` | <http://127.0.0.1:4174> |
 
-See [demo/README.md](demo/README.md) for a guided tour of the dashboard and
-the matching CLI commands. The demo is not part of the published tarball.
+The demo is a small Express app with a health-check page (Axios pings the
+npm registry), a production dependency (`axios`) and a dev dependency
+(`nodemon`). Open the dashboard inside `demo/` to see exactly those
+packages and run npm-buddy against a real project.
+
+See [demo/README.md](demo/README.md) for a guided tour. The demo is not
+part of the published tarball.
 
 ## Features
 
