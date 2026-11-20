@@ -30,6 +30,14 @@ npm-buddy
 No arguments opens the interactive menu. You can also use commands
 directly.
 
+## Using it in your own project
+
+- [HOW-TO-USE.md](HOW-TO-USE.md) - scenario-driven recipes for real
+  projects: starting fresh, taking over an existing codebase, adding and
+  removing dependencies, keeping versions current, security checks
+  before deploy, and teaching npm concepts.
+- [QUICKSTART.md](QUICKSTART.md) - five-minute setup and first run.
+
 ## Commands
 
 | Command | What it does |

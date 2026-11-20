@@ -31,6 +31,8 @@
     "dashboard/server",
     "dashboard/dist",
     "README.md",
+    "HOW-TO-USE.md",
+    "QUICKSTART.md",
     "LICENSE"
   ],
   "dependencies": {
