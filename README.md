@@ -72,6 +72,20 @@ npm-buddy explain packagejsonlock
 npm-buddy explain node_modules
 ```
 
+## Demo project
+
+`demo/` is a small Express app with a production and a dev dependency, made
+for trying npm-pal safely.
+
+```bash
+cd demo
+npm install
+npm-buddy dashboard
+```
+
+See [demo/README.md](demo/README.md) for a guided tour of the dashboard and
+the matching CLI commands. The demo is not part of the published tarball.
+
 ## Features
 
 - Simple package management
