@@ -1,81 +1,110 @@
-# npm-pal demo project
+# npm-pal demo
 
-A tiny Express app to try **npm-pal / npm-buddy** against a real Node.js
-project. Nothing here is published; it exists so you can click around the
-dashboard and run CLI commands safely.
+A beginner-friendly npm companion CLI. This sample Node.js app exists so you
+can try **npm-pal / npm-buddy** against a real project: install and remove
+packages, audit them, and learn npm along the way.
 
-The app has two dependencies (`express`, `chalk`) and one dev dependency
-(`nodemon`), which is enough to see production vs development packages,
-outdated checks, and the dependency mix in the dashboard.
+## What this demo showcases
 
-## 1. Install the CLI
+| Feature | Demo |
+| --- | --- |
+| Install packages | Install `express` and `axios` appear in the dashboard |
+| Remove packages | Uninstall a dependency in two clicks |
+| List packages | See declared vs installed versions |
+| Outdated | Check for newer package versions |
+| Audit | See dependency vulnerabilities |
+| Explain | Learn npm concepts in plain language |
+| Learn | Take the interactive beginner quiz |
+| Doctor | Diagnose the npm / Node.js setup |
+| Menu | Explore everything from one terminal menu |
+| Dashboard | Browse it all in the browser at `127.0.0.1:4174` |
+
+## Structure
+
+```
+npm-pal-demo/
+├── server.js          Express app, /api/health via Axios
+├── package.json
+├── README.md
+├── .gitignore
+└── public/
+    └── index.html     Sample website with a health-check button
+```
+
+## 1. Install dependencies
+
+```bash
+npm install
+```
+
+## 2. Install the published package
 
 ```bash
 npm install -g npm-pal
 npm-buddy --version    # 1.1.0 or newer
 ```
 
-## 2. Install the demo
-
-From this folder (`demo/`):
+## 3. Start the demo application
 
 ```bash
-npm install
+npm start
 ```
 
-## 3. Open the dashboard
+Open <http://localhost:3000> and press **Check health**. The page calls
+`/api/health`, which reports the Node.js version, uptime, and whether the npm
+registry is reachable (that request uses Axios).
+
+Use `npm run dev` to restart automatically with nodemon on file changes.
+
+## 4. Demonstrate npm-pal
+
+Open another terminal inside this folder:
+
+```bash
+npm-buddy                         # interactive menu
+npm-buddy list                    # installed dependencies
+npm-buddy outdated                # newer versions on the registry
+npm-buddy audit                   # security report
+npm-buddy explain package.json    # learn a concept
+npm-buddy learn                   # beginner quiz
+npm-buddy doctor                  # Node / npm environment
+```
+
+Try a real change while the dashboard is open:
+
+```bash
+npm-buddy install zod
+npm-buddy install vitest --dev
+npm-buddy remove vitest
+```
+
+## 5. Open the dashboard
 
 ```bash
 npm-buddy dashboard
 ```
 
-The browser opens at <http://127.0.0.1:4174>, already pointed at this folder.
-Press `Ctrl+C` in the terminal to stop it.
+Your browser opens at <http://127.0.0.1:4174>, already pointed at this folder.
+Press `Ctrl+C` in the terminal to stop the dashboard.
 
-## Things to try
+Things worth clicking:
 
-| Where | Action |
+- **Overview** — dependency mix, activity chart, project health
+- **Packages** — install/remove with validated names, prod/dev filters
+- **Security audit** — real `npm audit` findings
+- **Outdated packages** — current vs wanted vs latest
+- **Command playground** — run `npm view express`
+- **NPM concepts** and **Interactive quiz**
+- **Activity logs** — the exact npm command behind every operation
+- **Project doctor** — environment checks
+
+## Troubleshooting
+
+| Symptom | Fix |
 | --- | --- |
-| Overview | Watch the activity chart after each operation |
-| Packages | Install `zod` (production), then install `vitest` with the dev toggle |
-| Packages | Remove `vitest` — confirm the two-step action |
-| Security audit | See npm audit results for the installed tree |
-| Outdated packages | Compare current, wanted and latest versions |
-| Command playground | Run `npm view express` and read the registry JSON |
-| NPM concepts | Read "Dependencies" and "DevDependencies" |
-| Interactive quiz | Score the three-question quiz |
-| Activity logs | Inspect the exact npm command behind each action |
-| Project doctor | Check Node, npm, lockfile and node_modules |
+| `npm-buddy: command not found` | Install globally: `npm install -g npm-pal`, then reopen the terminal |
+| Dashboard port 4174 busy | Stop the other dashboard (`Ctrl+C`) or close the tab and retry |
+| Health check shows registry unreachable | You are offline; the local checks still work |
+| Page cannot find packages | Run `npm install` in this folder first |
 
-## CLI equivalents
-
-Everything the dashboard does is also a command:
-
-```bash
-npm-buddy list
-npm-buddy install zod
-npm-buddy install vitest --dev
-npm-buddy remove vitest
-npm-buddy outdated
-npm-buddy audit
-npm-buddy doctor
-npm-buddy explain dependencies
-npm-buddy learn
-```
-
-## Run the app itself
-
-```bash
-npm start        # http://127.0.0.1:3000
-npm run dev      # nodemon, restarts on change
-npm test         # node:test against the HTTP routes
-```
-
-## Clean up
-
-```bash
-npm-buddy remove zod vitest
-```
-
-`node_modules/` and `package-lock.json` are yours to keep or delete; the
-repository ignores `node_modules/`.
+The demo is not part of the published npm-pal package.

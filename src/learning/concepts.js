@@ -42,8 +42,19 @@ const concepts = {
   }
 };
 
+const aliases = {
+  "package.json": "packagejson",
+  "package-lock.json": "packagejsonlock",
+  "package-lock": "packagejsonlock",
+  "lockfile": "packagejsonlock",
+  "node-modules": "node_modules",
+  "dev-dependencies": "devdependencies",
+  "dev-dependency": "devdependencies"
+};
+
 export function getConcept(topic) {
-  return concepts[topic.toLowerCase()];
+  const key = topic.toLowerCase().trim();
+  return concepts[aliases[key] ?? key];
 }
 
 export function listTopics() {

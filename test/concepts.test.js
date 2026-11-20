@@ -44,6 +44,12 @@ test("topic lookup is case insensitive", () => {
   );
 });
 
+test("common file names resolve to their topic", () => {
+  assert.equal(getConcept("package.json").title, "package.json");
+  assert.equal(getConcept("package-lock.json").title, "package-lock.json");
+  assert.equal(getConcept("node-modules").title, "node_modules");
+});
+
 test("explaining a topic prints its details", () => {
   const output = captureLogs(() =>
     explainConcept("devdependencies")

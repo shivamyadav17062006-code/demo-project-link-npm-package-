@@ -2,21 +2,20 @@
   "name": "npm-pal-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Demo project for npm-pal / npm-buddy",
+  "description": "Sample Node.js app for trying npm-pal / npm-buddy",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "test": "node --test"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "engines": {
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "chalk": "^6.0.1",
+    "axios": "^1.21.1",
     "express": "^5.3.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.14"
   }
 }
